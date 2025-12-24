@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <title>Project</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<a href="index.html">← Back to Archive</a>
+
+<article id="project"></article>
+
+<script src="data.js"></script>
+<script>
+  const id = new URLSearchParams(location.search).get("id");
+  const p = PROJECTS.find(x => x.id === id);
+
+  document.getElementById("project").innerHTML = `
+    <h1>${p.title}</h1>
+    <p>${p.role} · ${p.year}</p>
+    ${p.note ? `<p>${p.note}</p>` : ""}
+    ${p.images.map(img => `<img src="${img}">`).join("")}
+  `;
+</script>
+
+</body>
+</html>
